@@ -1,0 +1,9 @@
+{
+  "Loading": {
+    "First": "Widget loading...",
+    "Second": "Widget still loading...",
+    "Third": "Widget loading longer as usual, please wait",
+    "Error": "Error loading. Please reload window",
+    "LoadingFinished": "Widget loaded!"
+  }
+}
