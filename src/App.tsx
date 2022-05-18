@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { CButton, CSpinner } from "@coreui/react";
 import axios from "axios";
 
-const fetchPlanets = async () => {
+const fetchData = async () => {
   const testAwait = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -41,7 +41,7 @@ const SomeConvenientWidget: FC = () => {
     }
   }, [seconds, timerActive]);
 
-  const { data, status } = useQuery("planets", fetchPlanets);
+  const { data, status } = useQuery("dataQuery", fetchData);
 
   const { t, i18n } = useTranslation();
 
@@ -55,6 +55,7 @@ const SomeConvenientWidget: FC = () => {
       <hr />
       <>
         <button
+          className="btn btn-info"
           style={timerActive ? { display: "none" } : { display: "block" }}
           onClick={() => setTimerActive(!timerActive)}
         >
@@ -81,7 +82,7 @@ const SomeConvenientWidget: FC = () => {
       )}
       {status === "success" && (
         <>
-          <CButton className="btn-success" disabled>
+          <CButton className="btn btn-success" disabled>
             {t("Loading.LoadingFinished")}
           </CButton>
           <div>
@@ -91,6 +92,13 @@ const SomeConvenientWidget: FC = () => {
               </div>
             ))}
           </div>
+        </>
+      )}
+      {status === "error" && (
+        <>
+          <CButton className="btn btn-danger" disabled>
+            {t("Loading.Error")}
+          </CButton>
         </>
       )}
     </>
