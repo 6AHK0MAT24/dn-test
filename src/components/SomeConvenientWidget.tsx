@@ -67,7 +67,7 @@ export const SomeConvenientWidget: FC = () => {
           </div>
         </>
       )}
-      {status === "error" && (
+      {(status === "loading" || status === "error") && seconds === 0 && (
         <>
           <CButton className="btn btn-danger" disabled>
             {t("Loading.Error")}
